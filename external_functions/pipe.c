@@ -21,7 +21,6 @@ int main(int argc, char *argv[])
 		perror("pipe error");
 		exit(EXIT_FAILURE);
 	}
-
 	cpid = fork();
 	if (cpid == -1)
 	{
@@ -31,7 +30,7 @@ int main(int argc, char *argv[])
 	if (cpid == 0) // Child reads from pipe
 	{
 		close(pipefd[1]); // close unused write end
-		while (read(pipefd[0], &buf, 1) > 0)
+		while (read(pipefd[0], &buf, 1) > 0) // 읽을 게 있을 때까지 대기
 			write(STDOUT_FILENO, &buf, 1);
 		write(STDOUT_FILENO, "\n", 1);
 		close(pipefd[0]);
