@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 			write(STDOUT_FILENO, &buf, 1);
 		write(STDOUT_FILENO, "\n", 1);
 		close(pipefd[0]);
-		_exit(EXIT_SUCCESS);
+		exit(EXIT_SUCCESS);
 	}
 	else // Parent writes argv[1] to pipe
 	{
