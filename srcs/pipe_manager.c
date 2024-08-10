@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eonoh <eonoh@student.42gyeongsan.kr>       +#+  +:+       +#+        */
+/*   By: eonoh <eonoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/08 21:40:13 by eonoh             #+#    #+#             */
-/*   Updated: 2024/08/08 21:54:30 by eonoh            ###   ########.fr       */
+/*   Created: 2024/08/07 08:15:37 by eonoh             #+#    #+#             */
+/*   Updated: 2024/08/10 06:22:53 by eonoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	pipe_io(int *fd, const char **envp)
+void	pipe_file_io(char *argv[])
 {
-	int	pid;
+	int		fd[2];
 
-	pid = fork();
-	close()
+	pipe(fd);
+
 }
