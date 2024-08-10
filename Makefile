@@ -3,7 +3,8 @@ CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -f
 
 SRCS = ./srcs/pipex.c \
-		./srcs/error.c
+		./srcs/error.c \
+		./srcs/path.c
 OBJS = $(SRCS:.c=.o)
 TARGET = pipex
 
