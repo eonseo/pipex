@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eonoh <eonoh@student.42gyeongsan.kr>       +#+  +:+       +#+        */
+/*   By: eonoh <eonoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 08:14:06 by eonoh             #+#    #+#             */
-/*   Updated: 2024/08/11 00:27:40 by eonoh            ###   ########.fr       */
+/*   Updated: 2024/08/12 15:24:04 by eonoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*store_path(char *envp[])
+char *const	store_path(char *envp[])
 {
 	char	*path;
 	int		i;

@@ -4,7 +4,8 @@ RM = rm -f
 
 SRCS = ./srcs/pipex.c \
 		./srcs/error.c \
-		./srcs/path.c
+		./srcs/path.c \
+		./srcs/pipe_manager.c
 OBJS = $(SRCS:.c=.o)
 TARGET = pipex
 

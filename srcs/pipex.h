@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eonoh <eonoh@student.42gyeongsan.kr>       +#+  +:+       +#+        */
+/*   By: eonoh <eonoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 01:06:19 by eonoh             #+#    #+#             */
-/*   Updated: 2024/08/11 02:01:00 by eonoh            ###   ########.fr       */
+/*   Updated: 2024/08/12 15:24:28 by eonoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@
 #include "../libft/libft.h"
 
 //path.c
-char	*store_path(char *envp[]);
+char	*store_path(char *const	*envp[]);
 char	*find_path(char *argv, const char *env);
 
 //pipe_manager.c
-void	child_process(char *argv[]);
+void	child_process(int *pipefd, char *argv[], char *const *env[]);
 
 //error.c
 void	error(char *s);
