@@ -1,14 +1,8 @@
-wejifoqwjeiofjqiwoefjioq
-qwfei
-qwe
-weq
-qwfe
-asd
-czx
-vzcx
-vcz
-bcz
-bcz
-zb
-zbxc
-
+total 36
+drwxr-xr-x 2 eonoh 2023_42gyeongsan  4096 Aug 13 00:37 external_functions
+-rwxrwxrwx 1 eonoh 2023_42gyeongsan     0 Aug 13 01:24 file1
+-rwxrwxrwx 1 eonoh 2023_42gyeongsan     2 Aug 11 01:16 file2
+drwxr-xr-x 2 eonoh 2023_42gyeongsan  4096 Aug 13 01:22 libft
+-rw-r--r-- 1 eonoh 2023_42gyeongsan   469 Aug 13 00:09 Makefile
+-rwxr-xr-x 1 eonoh 2023_42gyeongsan 19936 Aug 13 01:22 pipex
+drwxr-xr-x 2 eonoh 2023_42gyeongsan   166 Aug 13 01:22 srcs

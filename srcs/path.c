@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eonoh <eonoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eonoh <eonoh@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 08:14:06 by eonoh             #+#    #+#             */
-/*   Updated: 2024/08/12 15:24:04 by eonoh            ###   ########.fr       */
+/*   Updated: 2024/08/13 01:29:35 by eonoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char *const	store_path(char *envp[])
+char	*store_path(char *envp[])
 {
 	char	*path;
 	int		i;
@@ -35,18 +35,18 @@ char	*find_path(char *argv, const char *env)
 	char	**paths;
 	char	**command;
 	char	*path;
-	int		mode;
 	int		i;
 
 	paths = ft_split(env, ':');
 	command = ft_split(argv, ' ');
 	i = 0;
-	mode = F_OK | X_OK;
 	path = NULL;
+	if (access(command[0], F_OK | X_OK) == 0)
+		return (path);
 	while (paths[i])
 	{
-		path = ft_strjoin(paths[i], *command);
-		if ((access(path, mode)) == 0)
+		path = ft_strjoin(paths[i], command[0]);
+		if ((access(path, F_OK | X_OK)) == 0)
 			break;
 		free(path);
 		i++;

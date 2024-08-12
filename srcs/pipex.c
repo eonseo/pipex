@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eonoh <eonoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eonoh <eonoh@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 21:44:20 by eonoh             #+#    #+#             */
-/*   Updated: 2024/08/12 15:22:16 by eonoh            ###   ########.fr       */
+/*   Updated: 2024/08/13 01:34:53 by eonoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,10 @@ int main(int argc, char *argv[], char *envp[])
 {
 	int			pipefd[2];
 	int			pid1;
-	// int			pid2;
-	char *const	*env[] = {store_path(envp), NULL};
+	int			pid2;
+	char *const	env[] = {store_path(envp), NULL};
 
-	// argc가 5개가 아니면 error
-	if (!argc || !argv)
+	if (argc != 5 || !argv)
 		error("argument\n");
 	if (pipe(pipefd) == -1)
 		error("pipe\n");
@@ -28,12 +27,13 @@ int main(int argc, char *argv[], char *envp[])
 	if (pid1 == -1)
 		error("fork\n");
 	if (pid1 == 0)
-		child_process(pipefd, argv, env);
-	// if (pid1 > 0)
-	// {
-	// 	wait(NULL);
-	// 	pid2 = fork();
-	// 	parents_process();
-	// }
+		first_child_process(pipefd, argv, env);
+	if (pid1 > 0)
+	{
+		wait(NULL);
+		pid2 = fork();
+		if (pid2 == 0)
+			second_child_process(pipefd, argv, env);
+	}
 	exit (0);
 }
