@@ -6,7 +6,7 @@
 /*   By: eonoh <eonoh@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 01:06:19 by eonoh             #+#    #+#             */
-/*   Updated: 2024/08/13 01:14:30 by eonoh            ###   ########.fr       */
+/*   Updated: 2024/08/13 16:13:08 by eonoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 # include <string.h>
 # include <fcntl.h>
 # include <errno.h>
-#include <stdio.h>
+# include <stdio.h>
 
-#include "../libft/libft.h"
+# include "../libft/libft.h"
 
 //path.c
 char	*store_path(char *envp[]);
@@ -32,6 +32,7 @@ char	*find_path(char *argv, const char *env);
 //pipe_manager.c
 void	first_child_process(int *pipefd, char *argv[], char *const env[]);
 void	second_child_process(int *pipefd, char *argv[], char *const env[]);
+void	parents_process(int *pipefd);
 
 //error.c
 void	error(char *s);

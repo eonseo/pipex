@@ -6,7 +6,7 @@
 /*   By: eonoh <eonoh@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 08:15:37 by eonoh             #+#    #+#             */
-/*   Updated: 2024/08/13 14:24:43 by eonoh            ###   ########.fr       */
+/*   Updated: 2024/08/13 16:54:46 by eonoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	first_child_process(int *pipefd, char *argv[], char *const env[])
 	filefd = open(argv[1], O_RDONLY);
 	if (filefd < 0)
 		error("file open\n");
-	dup2(filefd, STDIN_FILENO);
+	dup2(filefd, STDIN_FILENO); 
 	dup2(pipefd[1], STDOUT_FILENO);
 	close(pipefd[1]);
 	close(filefd);
@@ -52,7 +52,10 @@ void	second_child_process(int *pipefd, char *argv[], char *const env[])
 	error("execve\n");
 }
 
-void	pipe_io()
+void	parents_process(int *pipefd)
 {
-	
+	close(pipefd[0]);
+	close(pipefd[1]);
+	wait(NULL);
+	wait(NULL);
 }

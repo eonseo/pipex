@@ -1,0 +1,10 @@
+Makefile
+external_functions
+infile
+kkkk
+ks
+libft
+outfile
+pipex
+srcs
+zz
