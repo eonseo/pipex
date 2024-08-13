@@ -6,7 +6,7 @@
 /*   By: eonoh <eonoh@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 21:44:20 by eonoh             #+#    #+#             */
-/*   Updated: 2024/08/13 01:34:53 by eonoh            ###   ########.fr       */
+/*   Updated: 2024/08/13 14:23:18 by eonoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,20 @@ int main(int argc, char *argv[], char *envp[])
 	if (pipe(pipefd) == -1)
 		error("pipe\n");
 	pid1 = fork();
-	if (pid1 == -1)
-		error("fork\n");
-	if (pid1 == 0)
+	if (pid1 < 0)
+		error("first fork\n");
+	else if (pid1 == 0)
 		first_child_process(pipefd, argv, env);
-	if (pid1 > 0)
+	else
 	{
 		wait(NULL);
 		pid2 = fork();
-		if (pid2 == 0)
+		if (pid2 < 0)
+			error("second fork\n");
+		else if (pid2 == 0)
 			second_child_process(pipefd, argv, env);
+		else
+			wait(NULL);
 	}
-	exit (0);
+	exit (EXIT_SUCCESS);
 }

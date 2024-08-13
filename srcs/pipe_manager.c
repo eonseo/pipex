@@ -6,7 +6,7 @@
 /*   By: eonoh <eonoh@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 08:15:37 by eonoh             #+#    #+#             */
-/*   Updated: 2024/08/13 01:22:21 by eonoh            ###   ########.fr       */
+/*   Updated: 2024/08/13 14:24:43 by eonoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,9 @@ void	second_child_process(int *pipefd, char *argv[], char *const env[])
 	close(filefd);
 	execve(command, command_vec, env);
 	error("execve\n");
+}
+
+void	pipe_io()
+{
+	
 }
