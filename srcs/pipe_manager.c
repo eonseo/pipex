@@ -6,7 +6,7 @@
 /*   By: eonoh <eonoh@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 08:15:37 by eonoh             #+#    #+#             */
-/*   Updated: 2024/08/13 16:54:46 by eonoh            ###   ########.fr       */
+/*   Updated: 2024/08/14 01:52:43 by eonoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	first_child_process(int *pipefd, char *argv[], char *const env[])
 
 	close(pipefd[0]);
 	command = find_path(argv[2], env[0]);
+	if (command == NULL)
+		error("path\n");
 	command_vec = ft_split(argv[2], ' ');
 	filefd = open(argv[1], O_RDONLY);
 	if (filefd < 0)
@@ -40,6 +42,8 @@ void	second_child_process(int *pipefd, char *argv[], char *const env[])
 
 	close(pipefd[1]);
 	command = find_path(argv[3], env[0]);
+	if (command == NULL)
+		error("path\n");
 	command_vec = ft_split(argv[3], ' ');
 	filefd = open(argv[4], O_WRONLY | O_TRUNC | O_CREAT, 0644);
 	if (filefd < 0)

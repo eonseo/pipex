@@ -6,7 +6,7 @@
 /*   By: eonoh <eonoh@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 01:06:19 by eonoh             #+#    #+#             */
-/*   Updated: 2024/08/13 16:13:08 by eonoh            ###   ########.fr       */
+/*   Updated: 2024/08/14 01:51:06 by eonoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	first_child_process(int *pipefd, char *argv[], char *const env[]);
 void	second_child_process(int *pipefd, char *argv[], char *const env[]);
 void	parents_process(int *pipefd);
 
-//error.c
+//utils.c
 void	error(char *s);
+void	free_path(char **paths, char **command);
 
 #endif
