@@ -1,2 +1,0 @@
-fd1: 3, ret: 1
-Even though 'printf' was used, the output is written to a file.

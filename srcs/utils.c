@@ -6,7 +6,7 @@
 /*   By: eonoh <eonoh@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 01:05:11 by eonoh             #+#    #+#             */
-/*   Updated: 2024/08/14 01:50:40 by eonoh            ###   ########.fr       */
+/*   Updated: 2024/08/14 20:36:35 by eonoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 void	error(char *s)
 {
-	perror(s);
+	errno ;
+	if (s)
+		perror(s);
 	exit(EXIT_FAILURE);
 }
+
 void	free_path(char **paths, char **command)
 {
 	int	i;
