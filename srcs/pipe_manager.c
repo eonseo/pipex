@@ -6,7 +6,7 @@
 /*   By: eonoh <eonoh@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 08:15:37 by eonoh             #+#    #+#             */
-/*   Updated: 2024/08/15 22:36:38 by eonoh            ###   ########.fr       */
+/*   Updated: 2024/08/17 23:49:18 by eonoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,17 @@ void	first_child_process(int *pipefd, char *argv[], char *const env[])
 	close(pipefd[0]);
 	command = find_path(argv[2], env[0]);
 	if (command == NULL)
-	{
-		write(2, "command not found: ", ft_strlen("command not found: "));
-		write(2, argv[2], ft_strlen(argv[2]));
-		write(2, "\n", 1);
-		exit(EXIT_FAILURE);
-	}
+		error(argv[2], 3);
 	command_vec = ft_split(argv[2], ' ');
 	filefd = open(argv[1], O_RDONLY);
 	if (filefd < 0)
-		error(argv[1]);
+		error(argv[1], 2);
 	dup2(filefd, STDIN_FILENO);
 	dup2(pipefd[1], STDOUT_FILENO);
 	close(pipefd[1]);
 	close(filefd);
 	execve(command, command_vec, env);
-	error(NULL);
+	error(NULL, 4);
 }
 
 void	second_child_process(int *pipefd, char *argv[], char *const env[])
@@ -50,20 +45,15 @@ void	second_child_process(int *pipefd, char *argv[], char *const env[])
 	command_vec = ft_split(argv[3], ' ');
 	filefd = open(argv[4], O_WRONLY | O_TRUNC | O_CREAT, 0644);
 	if (command == NULL)
-	{
-		write(2, "command not found: ", ft_strlen("command not found: "));
-		write(2, argv[3], ft_strlen(argv[3]));
-		write(2, "\n", 1);
-		exit(EXIT_FAILURE);
-	}
+		error(argv[3], 3);
 	if (filefd < 0)
-		error(argv[3]);
+		error(argv[4], 2);
 	dup2(pipefd[0], STDIN_FILENO);
 	dup2(filefd, STDOUT_FILENO);
 	close(pipefd[0]);
 	close(filefd);
 	execve(command, command_vec, env);
-	error(NULL);
+	error(NULL, 4);
 }
 
 void	parents_process(int *pipefd)
